@@ -3,114 +3,684 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RedSea Nexus | Global Import & Export</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>RedSea Nexus | Connecting China to the World</title>
+  <meta name="description" content="RedSea Nexus specializes in importing and exporting goods from China to the world. Trusted logistics, sourcing, and global trade solutions.">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
+    :root {
+      --deep-red: #8B0000;
+      --rich-blue: #1F3B4D;
+      --sandy-gold: #C9A46B;
+      --white: #fff;
+      --gray: #f4f4f4;
+      --dark: #222;
+      --transition: 0.3s cubic-bezier(.4,0,.2,1);
+    }
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+      background: var(--gray);
+      color: var(--dark);
       line-height: 1.6;
     }
-    header {
-      background: #032539;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition);
     }
-    header img {
-      max-height: 70px;
+    ul {
+      list-style: none;
+    }
+    /* Header */
+    header {
+      background: var(--rich-blue);
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--sandy-gold);
     }
     nav {
-      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
     }
     nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: background var(--transition), color var(--transition);
     }
+    nav a:hover, nav a.active {
+      background: var(--sandy-gold);
+      color: var(--rich-blue);
+    }
+    .cta-btn {
+      background: var(--deep-red);
+      color: var(--white);
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(139,0,0,0.08);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .cta-btn:hover {
+      background: var(--sandy-gold);
+      color: var(--rich-blue);
+      transform: translateY(-2px) scale(1.04);
+    }
+    /* Hamburger for mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--sandy-gold);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+    /* Hero Section */
     .hero {
-      background: url('your-hero-image.jpg') center/cover no-repeat;
-      height: 400px;
+      position: relative;
+      min-height: 70vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: white;
-      background-color: #00000088;
+      background: linear-gradient(rgba(31,59,77,0.7),rgba(139,0,0,0.5)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      color: var(--white);
+      overflow: hidden;
+    }
+    .hero-content {
+      z-index: 2;
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      animation: fadeInUp 1.2s cubic-bezier(.4,0,.2,1);
     }
     .hero h1 {
-      font-size: 2.5rem;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 10px;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: #f8e9d2;
+    }
+    .hero .hero-btn {
+      background: var(--sandy-gold);
+      color: var(--rich-blue);
+      padding: 0.9rem 2.2rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(201,164,107,0.12);
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+    .hero .hero-btn:hover {
+      background: var(--deep-red);
+      color: var(--white);
+      transform: scale(1.05);
+    }
+    /* Parallax effect */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: inherit;
+      background-attachment: fixed;
+      z-index: 1;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    /* About Section */
     section {
-      padding: 40px 20px;
-      max-width: 1000px;
+      padding: 70px 20px;
+      max-width: 1200px;
       margin: auto;
     }
-    .about, .services, .contact {
-      margin-bottom: 40px;
-    }
-    h2 {
-      margin-bottom: 20px;
-      color: #032539;
-    }
-    footer {
-      background: #032539;
-      color: white;
+    .about {
       text-align: center;
-      padding: 15px 0;
+      margin-bottom: 2rem;
+    }
+    .about h2 {
+      color: var(--deep-red);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .about p {
+      font-size: 1.1rem;
+      color: #444;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    /* Services Section */
+    .services {
+      margin-bottom: 2rem;
+    }
+    .services h2 {
+      color: var(--rich-blue);
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+    .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(31,59,77,0.07);
+      padding: 2.5rem 2rem;
+      flex: 1 1 220px;
+      max-width: 260px;
+      min-width: 220px;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+      border-bottom: 4px solid var(--sandy-gold);
+    }
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 32px rgba(139,0,0,0.10);
+      border-bottom: 4px solid var(--deep-red);
+    }
+    .service-card i {
+      font-size: 2.5rem;
+      color: var(--deep-red);
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      color: var(--rich-blue);
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+    .service-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+    /* Partners/Testimonials */
+    .partners {
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(31,59,77,0.07);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .partners h2 {
+      color: var(--deep-red);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    .partner-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .partner-logos img {
+      height: 48px;
+      width: auto;
+      filter: grayscale(1) brightness(0.8);
+      opacity: 0.8;
+      transition: filter var(--transition), opacity var(--transition), transform var(--transition);
+    }
+    .partner-logos img:hover {
+      filter: none;
+      opacity: 1;
+      transform: scale(1.08);
+    }
+    .testimonials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .testimonial {
+      background: var(--gray);
+      border-radius: 12px;
+      padding: 1.5rem 1.2rem;
+      max-width: 320px;
+      min-width: 220px;
+      box-shadow: 0 2px 8px rgba(31,59,77,0.04);
+      text-align: left;
+      font-size: 1rem;
+      color: #333;
+      position: relative;
+    }
+    .testimonial:before {
+      content: "“";
+      font-size: 2.5rem;
+      color: var(--sandy-gold);
+      position: absolute;
+      left: 10px;
+      top: 0;
+    }
+    .testimonial .author {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: var(--deep-red);
+      font-size: 0.98rem;
+    }
+    /* Contact Section */
+    .contact {
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(31,59,77,0.07);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .contact-info {
+      flex: 1 1 260px;
+      min-width: 220px;
+    }
+    .contact-info h2 {
+      color: var(--rich-blue);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .contact-info p, .contact-info a {
+      color: #444;
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .contact-info a {
+      color: var(--deep-red);
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .contact-info a:hover {
+      color: var(--sandy-gold);
+    }
+    .contact-form {
+      flex: 1 1 340px;
+      min-width: 260px;
+      max-width: 420px;
+    }
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 0.9rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fafafa;
+      transition: border var(--transition), box-shadow var(--transition);
+      resize: none;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border: 1.5px solid var(--deep-red);
+      box-shadow: 0 2px 8px rgba(139,0,0,0.08);
+      outline: none;
+    }
+    .contact-form button {
+      background: var(--deep-red);
+      color: var(--white);
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .contact-form button:hover {
+      background: var(--sandy-gold);
+      color: var(--rich-blue);
+      transform: scale(1.04);
+    }
+    /* Google Map */
+    .map {
+      margin-top: 1.5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(31,59,77,0.07);
+      min-width: 220px;
+      min-height: 220px;
+      width: 100%;
+      max-width: 420px;
+      height: 220px;
+    }
+    /* Footer */
+    footer {
+      background: var(--rich-blue);
+      color: var(--white);
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--sandy-gold);
+      margin-bottom: 1rem;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .footer-links a {
+      color: var(--white);
+      font-size: 1rem;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover {
+      color: var(--sandy-gold);
+    }
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .footer-social a {
+      color: var(--sandy-gold);
+      font-size: 1.3rem;
+      transition: color var(--transition), transform var(--transition);
+    }
+    .footer-social a:hover {
+      color: var(--deep-red);
+      transform: scale(1.15);
+    }
+    .footer-bottom {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+    /* Responsive Styles */
+    @media (max-width: 900px) {
+      .service-cards, .testimonials, .partner-logos, .footer-content, .contact {
+        flex-direction: column;
+        align-items: center;
+      }
+      .service-card, .testimonial, .contact-info, .contact-form, .map {
+        max-width: 100%;
+        min-width: 0;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+    }
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      section {
+        padding: 40px 10px;
+      }
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .navbar nav {
+        display: none;
+        flex-direction: column;
+        background: var(--rich-blue);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        padding: 1rem 0;
+      }
+      .navbar nav.open {
+        display: flex;
+      }
+      .cta-btn {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <img src="RedSea_Nexus_Logo.png" alt="RedSea Nexus Logo" />
-    <nav>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="navbar">
+      <div class="logo">RedSea Nexus</div>
+      <nav>
+        <a href="#hero" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#partners">Partners</a>
+        <a href="#contact">Contact</a>
+        <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+      </nav>
+      <div class="hamburger" id="hamburger" aria-label="Open menu" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
   </header>
 
-  <div class="hero">
-    <h1>Connecting Trade Across Continents</h1>
-  </div>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Connecting China to the World</h1>
+      <p>RedSea Nexus is your trusted partner for seamless import, export, logistics, and sourcing solutions. We bridge the gap between China and global markets with reliability and expertise.</p>
+      <button class="hero-btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Learn More</button>
+    </div>
+  </section>
 
-  <section id="about" class="about">
+  <!-- About Section -->
+  <section class="about" id="about">
     <h2>About RedSea Nexus</h2>
     <p>
-      RedSea Nexus is your trusted import and export partner, bridging the bustling markets of China with the dynamic regions of the Middle East, Africa, and beyond. Rooted in heritage and driven by innovation, we bring global goods closer to you.
+      At RedSea Nexus, our mission is to empower businesses worldwide by providing efficient, transparent, and innovative trade solutions. With deep roots in the Red Sea region and a global outlook, we specialize in connecting China’s manufacturing power to markets across the Middle East, Africa, and beyond. Our strengths lie in our experienced team, robust logistics network, and commitment to customer success.
     </p>
   </section>
 
-  <section id="services" class="services">
-    <h2>What We Do</h2>
-    <ul>
-      <li>✅ Sourcing quality general goods from China</li>
-      <li>✅ Export logistics and customs management</li>
-      <li>✅ Import services and product distribution</li>
-      <li>✅ Business-to-business (B2B) solutions</li>
-    </ul>
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+      <div class="service-card">
+        <i class="fas fa-box-open"></i>
+        <h3>Import</h3>
+        <p>We handle all aspects of importing goods from China, ensuring compliance, speed, and cost-efficiency.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-ship"></i>
+        <h3>Export</h3>
+        <p>Our export services connect your products to global markets with reliable shipping and documentation.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-truck-moving"></i>
+        <h3>Logistics</h3>
+        <p>From port to warehouse, our logistics solutions guarantee safe and timely delivery worldwide.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-search-dollar"></i>
+        <h3>Sourcing</h3>
+        <p>We find and vet quality suppliers in China, negotiating the best deals for your business needs.</p>
+      </div>
+    </div>
   </section>
 
-  <section id="contact" class="contact">
-    <h2>Get in Touch</h2>
-    <p>Email: <a href="mailto:info@redseanexus.com">info@redseanexus.com</a></p>
-    <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
-    <p>Location: Based in the Red Sea Region, Operating Worldwide</p>
+  <!-- Partners/Testimonials Section -->
+  <section class="partners" id="partners">
+    <h2>Our Partners & Clients</h2>
+    <div class="partner-logos">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Maersk_logo.svg" alt="Maersk Logo" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/COSCO_logo.svg" alt="COSCO Logo" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Alibaba_Group_logo.svg" alt="Alibaba Logo" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/DHL_Logo.svg" alt="DHL Logo" />
+    </div>
+    <div class="testimonials">
+      <div class="testimonial">
+        "RedSea Nexus made our China imports smooth and hassle-free. Their team is responsive and professional."
+        <div class="author">— Ahmed S., Logistics Manager</div>
+      </div>
+      <div class="testimonial">
+        "We trust RedSea Nexus for all our sourcing needs. Highly recommended for international trade."
+        <div class="author">— Sarah L., Procurement Lead</div>
+      </div>
+    </div>
   </section>
 
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-info">
+      <h2>Contact Us</h2>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:info@redseanexus.com">info@redseanexus.com</a></p>
+      <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">+123 456 7890</a></p>
+      <p><i class="fas fa-map-marker-alt"></i> Based in the Red Sea Region, Operating Worldwide</p>
+      <div class="map">
+        <!-- Google Maps Embed Example (replace with your location if needed) -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.964816634352!2d39.19797131591544!3d21.48581137962425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d1e6e8e6e5e7%3A0x7e2b7e2b7e2b7e2b!2sRed%20Sea!5e0!3m2!1sen!2seg!4v1680000000000!5m2!1sen!2seg" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="contact-form">
+      <form autocomplete="off">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 RedSea Nexus. All rights reserved.</p>
+    <div class="footer-content">
+      <div>
+        <div class="footer-logo">RedSea Nexus</div>
+        <div>Connecting China to the World</div>
+      </div>
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#partners">Partners</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <div>Follow Us</div>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 RedSea Nexus. All rights reserved.
+    </div>
   </footer>
+  <!-- Responsive Navbar Script -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.querySelector('.navbar nav');
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+    hamburger.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') nav.classList.toggle('open');
+    });
+    // Close nav on link click (mobile)
+    document.querySelectorAll('.navbar nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        if(window.innerWidth <= 600) nav.classList.remove('open');
+      });
+    });
+    // Highlight active nav link on scroll
+    window.addEventListener('scroll', () => {
+      const sections = ['hero','about','services','partners','contact'];
+      let scrollPos = window.scrollY + 100;
+      for (let id of sections) {
+        let sec = document.getElementById(id);
+        if (sec && sec.offsetTop <= scrollPos && sec.offsetTop + sec.offsetHeight > scrollPos) {
+          document.querySelectorAll('.navbar nav a').forEach(a => a.classList.remove('active'));
+          let active = document.querySelector('.navbar nav a[href="#'+id+'"]');
+          if(active) active.classList.add('active');
+        }
+      }
+    });
+    // Prevent form submission (demo)
+    document.querySelector('.contact-form form').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thank you for contacting RedSea Nexus! (Demo form)');
+    });
+  </script>
 </body>
 </html>
